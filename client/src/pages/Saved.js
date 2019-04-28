@@ -10,8 +10,8 @@ return(
     <div>
     <Navbar />
     <Jumbotron>
-    <h1>(React) Google Books Search</h1>
-    <span>search FOR & SAVE books of Interest</span>
+    <span>(React) Google Books Search</span>
+    <h1>search FOR & SAVE books of Interest</h1>
     </Jumbotron>
     </div>
 );
