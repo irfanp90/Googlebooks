@@ -2,8 +2,41 @@ import React, { Component } from "react";
 import Navbar from "../components/Navbar";
 import Jumbotron from "../components/Body";
 import { Input,FormBtn } from "../components/Form"
-
+import API from "../utils/API"
 class Search extends Component {
+  state = {
+    bookData: [],
+   search:""
+  };
+  componentDidMount() {
+    this.loadBooks();
+  }
+  loadBooks = () => {
+    API.getBooks()
+      .then(res =>
+        this.setState({ books: res.data, title: "", authors: "", description: "",img: "", link: ""  })
+      )
+      .catch(err => console.log(err));
+  }
+
+  handleInputChange = event => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
+  };
+
+  handleFormSubmit = event => {
+    event.preventDefault();
+    API.searchBooks(this.state.search)
+        .then((response) => { this.setState({bookData: response.data})
+        console.log("clicked", response)
+        this.setState({search: ""});
+      }
+        )
+        .catch(err => console.log(err));
+    
+  };
 
 render(){
 return(
@@ -15,8 +48,8 @@ return(
     </Jumbotron>
     <form>
     <Input
-      value=""
-      onChange=""
+      value={this.state.search}
+      onChange={this.handleInputChange}
       name="search"
       placeholder="Search for a book..."
     />
