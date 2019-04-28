@@ -11,8 +11,8 @@ const headerStyle = {
   "font-weight":"bold",
   "font-size": "70px",
   "text-shadow": "1px 1px 2px indianred, 0 0 1em gray, 0 0 0.2em white"
-
 }
+
 function Jumbotron({ children }) {
   return (
     
