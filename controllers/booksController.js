@@ -1,4 +1,3 @@
-require("env").config();
 const db = require("../models");
 const axios=require("axios");
 
@@ -12,7 +11,7 @@ module.exports = {
       },
 
       searchAll: function(req, res) {
-        let bookTitle = req.body.title.replace(/\s/g, "+");
+        let bookTitle = req.body.title
         axios.get(
             `https://www.googleapis.com/books/v1/volumes?q=${bookTitle}&key=${process.env.GOOGLE_BOOKS_API}`
         )

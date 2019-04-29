@@ -2,15 +2,15 @@ import React from "react";
 import bookImage from "../../Images/bk.jpg";
 
 const headerStyle = {
-  "backgroundImage": `url(${bookImage})`,
-  "maxWidth": "100vw",
+  backgroundImage: `url(${bookImage})`,
+  maxWidth: "100vw",
   height: "calc(25vw)",
-  "backgroundSize": "cover",
+  backgroundSize: "cover",
   position: "relative",
   color: "black",
-  "font-weight":"bold",
-  "font-size": "70px",
-  "text-shadow": "1px 1px 2px indianred, 0 0 1em gray, 0 0 0.2em white"
+  fontWeight:"bold",
+  fontSize: "70px",
+  textShadow: "1px 1px 2px indianred, 0 0 1em gray, 0 0 0.2em white"
 }
 
 function Jumbotron({ children }) {

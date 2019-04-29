@@ -3,9 +3,9 @@ import Navbar from "../components/Navbar";
 import Jumbotron from "../components/Body";
 import { Input,FormBtn } from "../components/Form"
 import API from "../utils/API"
-class Search extends Component {
+class Search extends React.Component {
   state = {
-    bookData: [],
+   bookData: [],
    search:""
   };
   componentDidMount() {
@@ -30,7 +30,7 @@ class Search extends Component {
     event.preventDefault();
     API.searchBooks(this.state.search)
         .then((response) => { this.setState({bookData: response.data})
-        console.log("clicked", response)
+        console.log("clicked", response.data)
         this.setState({search: ""});
       }
         )
