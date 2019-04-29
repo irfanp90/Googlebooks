@@ -14,10 +14,23 @@ class Search extends React.Component {
   loadBooks = () => {
     API.getBooks()
       .then(res =>
-        this.setState({ books: res.data, title: "", authors: "", description: "",img: "", link: ""  })
+        this.setState({ books: res.data, title: "", authors: "", description: "", img: "", link: ""  })
       )
       .catch(err => console.log(err));
   }
+  searchBooks = query => {
+    API.searchBooks(query)
+      .then(res =>
+        this.setState(
+          {
+            books: res.data.items,
+            search: ""
+          },
+          console.log(res.data.items)
+        )
+      )
+      .catch(err => console.log(err));
+  };
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -28,15 +41,8 @@ class Search extends React.Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    API.searchBooks(this.state.search)
-        .then((response) => { this.setState({bookData: response.data})
-        console.log("clicked", response.data)
-        this.setState({search: ""});
-      }
-        )
-        .catch(err => console.log(err));
-    
-  };
+    this.searchBooks(this.state.search);
+   };
 
 render(){
 return(
@@ -54,8 +60,8 @@ return(
       placeholder="Search for a book..."
     />
     <FormBtn
-                // disabled={!(this.state.author && this.state.title)}
-                onClick={this.handleFormSubmit}
+              
+onClick={this.handleFormSubmit}
               >
                SEARCH BOOK
               </FormBtn>
