@@ -29,7 +29,7 @@ class Search extends React.Component {
       .catch(err => console.log(err));
   };
   
-    SaveBook = bookData => {
+    handleSaveBook = bookData => {
       API.saveBook(bookData)
         .then(res => alert("Book Save!"))
         .catch(err => console.log(err));
@@ -82,7 +82,8 @@ onClick={this.handleFormSubmit}
             : "N/A"}
               description={book.volumeInfo.description}
               link={book.volumeInfo.infoLink}
-              handleSaveBook={() => this.SaveBook({
+              
+              handleSaveBook={() => this.handleSaveBook({
               src:book.volumeInfo.imageLinks.thumbnail,
               title:book.volumeInfo.title,
               authors:book.volumeInfo.authors,
