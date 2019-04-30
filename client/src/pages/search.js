@@ -84,6 +84,7 @@ onClick={this.handleFormSubmit}
               link={book.volumeInfo.infoLink}
               
               handleSaveBook={() => this.handleSaveBook({
+                
               src:book.volumeInfo.imageLinks.thumbnail,
               title:book.volumeInfo.title,
               authors:book.volumeInfo.authors,
