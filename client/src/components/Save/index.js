@@ -1,6 +1,6 @@
 import React from "react";
 
-function Result(props){
+function Save(props){
 return (
     <div className="card">
     <div className="card-header">
@@ -10,7 +10,7 @@ return (
       <h5 className="card-title"> {props.title}</h5>
       <img src={props.src} alt={props.title}style={{ float: "left"}} className="img-thumbnail"></img>
      
-      <button onClick={props.handleSaveBook} style={{ float: "right", marginRight: 100, color:"black"}}className="btn btn-primary btn-lg">SAVE</button>
+      <button onClick={props.handleDeleteBook} style={{ float: "right", marginRight: 100, color:"black"}}className="btn btn-primary btn-lg">DELETE</button>
       <p className="card-text"> Authors(s): {props.authors}.</p>
       <p className="card-text"> Google Link: <a href={props.link} target={"_blank"}>{props.title}</a></p>
       <p className="card-text"> Description: {props.description}</p>
@@ -21,4 +21,4 @@ return (
 )
 }
 
-export default Result;
+export default Save;

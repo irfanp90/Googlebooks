@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import Navbar from "../components/Navbar";
 import Jumbotron from "../components/Body";
 import Result from "../components/Result";
@@ -9,16 +9,7 @@ class Search extends React.Component {
    bookData: [],
    search:""
   };
-  componentDidMount() {
-    this.loadBooks();
-  }
-  loadBooks = () => {
-    API.getBooks()
-      .then(res =>
-        this.setState({ books: res.data, title: "", authors: "", description: "", img: "", link: ""  })
-      )
-      .catch(err => console.log(err));
-  }
+
   searchBooks = query => {
     API.searchBooks(query)
       .then(res =>
@@ -38,9 +29,9 @@ class Search extends React.Component {
       .catch(err => console.log(err));
   };
   
-    handleSaveBook = bookData => {
-      API.addBookTODB(bookData)
-        .then(res => alert("Book Saved!"))
+    SaveBook = bookData => {
+      API.saveBook(bookData)
+        .then(res => alert("Book Save!"))
         .catch(err => console.log(err));
     };
   handleInputChange = event => {
@@ -91,7 +82,15 @@ onClick={this.handleFormSubmit}
             : "N/A"}
               description={book.volumeInfo.description}
               link={book.volumeInfo.infoLink}
+              handleSaveBook={() => this.SaveBook({
+              src:book.volumeInfo.imageLinks.thumbnail,
+              title:book.volumeInfo.title,
+              authors:book.volumeInfo.authors,
+              description:book.volumeInfo.description,
+              link:book.volumeInfo.infoLink
+              })}
               />
+       
               ))}
               </span>
               ) : (

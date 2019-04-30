@@ -2,14 +2,18 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const BookSchema = new Schema({
-    title: String,
+    src:{
+        type: String
+    }, 
+    title:{
+        type: String
+    },
     authors: [String],
-    description: String,
-    img: {
-        type: {String},
+    description: {
+        type:String
     },
     link: {
-        type: String,
+       type:String,
     }
 });
 
