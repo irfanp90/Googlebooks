@@ -12,6 +12,7 @@ class Saved extends React.Component  {
 componentDidMount() {
     this.loadBooks();
   }
+
   loadBooks = () => {
     API.getBooks()
       .then(res =>
@@ -20,11 +21,13 @@ componentDidMount() {
       )
       .catch(err => console.log(err));
   }
+
   handleDeleteBook = id => {
     API.deleteBook(id)
       .then(res => this.loadBooks())
       .catch(err => console.log(err));
   };
+
 render(){
 return(
     <div>
@@ -37,17 +40,17 @@ return(
     <br></br>
     <br></br>
       {this.state.bookData.length ?(     
-        <span>
+      <span>
          {this.state.bookData.map(book=>(
            <Save
-           key={book._id}
-           src={book.volumeInfo.imageLinks.thumbnail}
-            title={book.volumeInfo.title}
-            authors={book.volumeInfo.authors ? book.volumeInfo.authors.join(", ")
+            key={book._id}
+            src={book.src}
+            title={book.title}
+            authors={book.authors ? book.authors.join(", ")
             : "N/A"}
-              description={book.volumeInfo.description}
-              link={book.volumeInfo.infoLink}
-              handleDeleteBook={() => this.handleDeleteBook(book._id)}
+            description={book.description}
+            link={book.link}
+            handleDeleteBook={() => this.handleDeleteBook(book._id)}
               />
               ))}
               </span>
