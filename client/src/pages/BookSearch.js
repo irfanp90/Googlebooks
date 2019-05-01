@@ -4,7 +4,7 @@ import Jumbotron from "../components/Body";
 import Result from "../components/Result";
 import { Input,FormBtn } from "../components/Form"
 import API from "../utils/API"
-class Search extends React.Component {
+class BookSearch extends React.Component {
   state = {
    bookData: [],
    search:""
@@ -106,4 +106,4 @@ onClick={this.handleFormSubmit}
   }
   }
 
-export default Search;
+export default BookSearch;
