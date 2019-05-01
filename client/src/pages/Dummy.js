@@ -1,6 +1,6 @@
 import React from "react";
 
-function Search () {
+function Dummy () {
     return(
 
         <div>hello</div>
@@ -8,4 +8,4 @@ function Search () {
     
 }
 
-export default Search;
+export default Dummy;
